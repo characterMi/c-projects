@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <string.h>
 
 int main()
 {
@@ -35,7 +36,8 @@ int main()
 
     printf("Connected to server!\n");
 
-    send(s, "hello from client!\n", 6, 0);
+    char *data = "hello from client!\n";
+    send(s, data, strlen(data), 0);
     int rec = recv(s, buffer, sizeof(buffer) - 1, 0);
     if (rec > 0)
     {
