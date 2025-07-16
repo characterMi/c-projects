@@ -15,7 +15,7 @@ int main()
         return -1;
     }
 
-    int s, c;
+    SOCKET s, c;
     int addrlen;
     addrlen = 0;
 
@@ -27,7 +27,7 @@ int main()
     memset(&cli, 0, sizeof(cli));
 
     // Socket setup
-    s = socket(/* IPv4 */ AF_INET, /* TCP */ SOCK_STREAM, 0);
+    s = socket(/* IPv4 */ AF_INET, /* TCP */ SOCK_STREAM, /* Default protocol */ 0);
     if (s == INVALID_SOCKET)
     {
         printf("socket()\n");
