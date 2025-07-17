@@ -27,8 +27,8 @@ int main()
     SOCKET s, c;
 
     struct sockaddr_in srv, cli;
-    char buffer[512];
-    char data[512];
+    char buff[512];
+    char res[512];
 
     clear_memory(&srv, &cli);
 
@@ -51,8 +51,8 @@ int main()
     if (accept_clients(&cli, &s, &c))
         return -1;
 
-    int rec = recv(c, buffer, sizeof(buffer) - 1, 0);
-    if (rec > 0 && respond_to_client(buffer, data, &s, &c, rec, sizeof(data)))
+    int rec = recv(c, buff, sizeof(buff) - 1, 0);
+    if (rec > 0 && respond_to_client(buff, res, &s, &c, rec, sizeof(res)))
         return -1;
 
     shutdown(c, SD_SEND);
